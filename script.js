@@ -37,7 +37,8 @@ function generatePassword(password) {
 
   //pulls you in the while loop validation
   var notSelected = true;
-
+  // used to find value to splice
+  var index;
   // calls function to check if conditions are wanted by user + validates that at least 1 is selected
   while(notSelected || !lowerCaseOnOff && !upperCaseOnOff && !specialCharOnOff && !numberOnOff)
   {
@@ -52,10 +53,34 @@ function generatePassword(password) {
     notSelected = false;
   }
 
-  if(!lowerCaseOnOff){randomArray.splice(0,1);}
-    if(!upperCaseOnOff){randomArray.splice(1,1);}
-    if(!specialCharOnOff){randomArray.splice(2,1);}
-    if(!numberOnOff){randomArray.splice(3,1);}
+  while(!lowerCaseOnOff || !upperCaseOnOff || !specialCharOnOff || !numberOnOff)
+  {
+    if(!lowerCaseOnOff)
+    {
+      index = randomArray.indexOf(1);
+      randomArray.splice(index,1);
+      lowerCaseOnOff = true;
+    }
+    if(!upperCaseOnOff)
+    {
+      index = randomArray.indexOf(2);
+      randomArray.splice(index,1);
+      upperCaseOnOff = true;
+    }
+    if(!specialCharOnOff)
+    {
+      index = randomArray.indexOf(3);
+      randomArray.splice(index,1);
+      specialCharOnOff = true;
+    }
+    if(!numberOnOff)
+    {
+      index = randomArray.indexOf(4);
+      randomArray.splice(index,1);
+      numberOnOff = true;
+    }
+  }
+  console.log(randomArray);
   
   // change the random number range if depending on t/f values
     
@@ -117,6 +142,7 @@ function useNumber()
   var numberOnOff = confirm("Do you want to use numbers?"); 
   return numberOnOff;
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
