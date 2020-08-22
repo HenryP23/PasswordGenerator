@@ -53,8 +53,7 @@ function generatePassword(password) {
     notSelected = false;
   }
 
-  while(!lowerCaseOnOff || !upperCaseOnOff || !specialCharOnOff || !numberOnOff)
-  {
+    //splices the options that were not chosen by the user.
     if(!lowerCaseOnOff)
     {
       index = randomArray.indexOf(1);
@@ -79,7 +78,6 @@ function generatePassword(password) {
       randomArray.splice(index,1);
       numberOnOff = true;
     }
-  }
   console.log(randomArray);
   
   // change the random number range if depending on t/f values
